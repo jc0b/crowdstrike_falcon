@@ -25,17 +25,17 @@ def get_falcon_data():
 
     out = {}
 
-    # print(crowdstrike_output_plist)
-
     out['agent_id'] = crowdstrike_output_plist['agent_info']['agentID']
     out['customer_id'] = crowdstrike_output_plist['agent_info']['customerID']
-    out['sensor_operational'] = (crowdstrike_output_plist['agent_info']['sensor_operational'] == "true")
+    out['sensor_operational'] = crowdstrike_output_plist['agent_info']['sensor_operational']
     out['sensor_version'] = crowdstrike_output_plist['agent_info']['version']
     # any of these three values being non-zero indicates that the sensor does not have FDA permissions.
     # source: https://macadmins.slack.com/archives/CA9SU2FSS/p1666719918778029?thread_ts=1666719119.280699&cid=CA9SU2FSS
-    out['fulldiskaccess_granted'] = ((int(crowdstrike_output_plist['EndpointSecurity']['auth']) + int(crowdstrike_output_plist['EndpointSecurity']['exec']) + int(crowdstrike_output_plist['EndpointSecurity']['notify']) == 0))
-    out['tamper_protection'] = (crowdstrike_output_plist['dynamic_settings']['installGuard'] == 'Enabled')
-
+    if ((int(crowdstrike_output_plist['EndpointSecurity']['auth']) + int(crowdstrike_output_plist['EndpointSecurity']['exec']) + int(crowdstrike_output_plist['EndpointSecurity']['notify']) == 0)):
+        out['fulldiskaccess_granted'] = "Yes"
+    else:
+        out['fulldiskaccess_granted'] = "No"
+    out['tamper_protection'] = crowdstrike_output_plist['dynamic_settings']['installGuard']
     return out
 
 
@@ -49,7 +49,6 @@ def main():
 
     # Get information about Falcon    
     result = get_falcon_data()
-    print result
 
     # Write results to cache
     cachedir = '%s/cache' % os.path.dirname(os.path.realpath(__file__))
