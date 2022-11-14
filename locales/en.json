@@ -1,0 +1,15 @@
+{ 
+    "agent_id": "Agent ID",
+    "customer_id": "Customer ID",
+    "sensor_operational": "Sensor Operational",
+    "sensor_version": "Sensor Version",
+    "fulldiskaccess_granted": "Full Disk Access granted to sensor",
+    "tamper_protection": "Tamper Protection",
+    "operational": "Operational",
+    "operational_status": "Operational Status",
+    "report_title": "Crowdstrike Falcon Report",
+    "title": "Crowdstrike Falcon",
+    "inoperational": "Inoperational",
+    "widget_operational": "Crowdstrike Falcon Operational Status",
+    "widget_operational_states": "Crowdstrike Falcon Operational States"
+}

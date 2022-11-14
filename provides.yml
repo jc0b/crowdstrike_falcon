@@ -1,0 +1,17 @@
+client_tabs:
+    crowdstrike_falcon-tab:
+        view: crowdstrike_falcon_tab
+        i18n: crowdstrike_falcon.title
+listings:
+    crowdstrike_falcon:
+        view: crowdstrike_falcon_listing
+        i18n: crowdstrike_falcon.title
+reports:
+    crowdstrike_falcon:
+        view: crowdstrike_falcon_report
+        i18n: crowdstrike_falcon.report_title
+widgets:
+    crowdstrike_falcon_operational_status:
+        view: crowdstrike_falcon_operational_status_widget
+    crowdstrike_falcon_healthy:
+        view: crowdstrike_falcon_healthy_widget

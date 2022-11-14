@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>agent_id</key>
+	<string>D3F007B1-EEBA-4018-B531-DC7B8BE391E9</string>
+	<key>customer_id</key>
+	<string>FF6356CB-1FCF-476D-A7BE-FA2D6A46CE35</string>
+	<key>fulldiskaccess_granted</key>
+	<true/>
+	<key>sensor_operational</key>
+	<true/>
+	<key>sensor_version</key>
+	<string>6.45.15801.0</string>
+	<key>tamper_protection</key>
+	<false/>
+</dict>
+</plist>

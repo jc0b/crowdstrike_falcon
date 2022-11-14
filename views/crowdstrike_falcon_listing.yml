@@ -1,0 +1,13 @@
+i18n_title: crowdstrike_falcon.report_title
+table:
+    -
+        column: machine.computer_name
+        i18n_header: listing.computername
+        formatter: clientDetail
+        tab_link: crowdstrike_falcon-tab
+    -
+        column: reportdata.serial_number
+        i18n_header: serial
+    - {i18n_header: crowdstrike_falcon.operational_status, column: crowdstrike_falcon.operational_status}
+    - {i18n_header: crowdstrike_falcon.sensor_version, column: crowdstrike_falcon.sensor_version}
+    - {i18n_header: crowdstrike_falcon.agent_id, column: crowdstrike_falcon.agent_id}

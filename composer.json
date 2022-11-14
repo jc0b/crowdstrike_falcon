@@ -1,0 +1,8 @@
+{
+    "name": "jc0b/crowdstrike_falcon",
+    "description": "A MunkiReport module for Crowdstrike Falcon.",
+    "license": "MIT",
+    "require": {
+        "php":"^7.0"
+    }
+}
