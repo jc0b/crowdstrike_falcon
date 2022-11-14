@@ -5,9 +5,9 @@ i18n_title: crowdstrike_falcon.widget_operational
 icon: fa-shield
 listing_link: /show/listing/crowdstrike_falcon/crowdstrike_falcon
 buttons:
-  - label: inoperational
+  - label: sensor_inoperational
     i18n_label: crowdstrike_falcon.inoperational
     class: btn-danger 
-  - label: operational
+  - label: sensor_operational
     i18n_label: crowdstrike_falcon.operational
     class: btn-success

@@ -31,7 +31,7 @@
 
             nv.addGraph(function() {
                 var chart = nv.models.pieChart()
-                    .x(function(d) { return d.protection_status })
+                    .x(function(d) { return d.sensor_operational })
                     .y(function(d) { return d.count })
 		    .showLabels(false);
 
