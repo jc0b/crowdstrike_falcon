@@ -34,10 +34,8 @@ $(document).on('appReady', function(){
 
                         // Format date
                         } else if((prop == "agent_id") && d[prop].length > 0){
-                            var agent_id = d[prop].toLowerCase();
-                            console.log(agent_id)
-                            console.log(agent_id.replace('-', ''))
-                            rows = rows + '<tr><th>'+i18n.t('crowdstrike_falcon.'+prop)+'</th><td><a href="https://'+crowdstrike_region+'.crowdstrike.com/hosts/hosts/host/'+agent_id.replace('-', '')+'">'+d[prop]+'</a></td></tr>';
+                            var agent_id = d[prop].toLowerCase().replaceAll('-', '');
+                            rows = rows + '<tr><th>'+i18n.t('crowdstrike_falcon.'+prop)+'</th><td><a href="https://'+crowdstrike_region+'.crowdstrike.com/hosts/hosts/host/'+agent_id+'">'+d[prop]+'</a></td></tr>';
                         } else {
                             rows = rows + '<tr><th>'+i18n.t('crowdstrike_falcon.'+prop)+'</th><td>'+d[prop]+'</td></tr>';
                         }
