@@ -4,6 +4,7 @@
     "sensor_operational": "Sensor Operational",
     "sensor_version": "Sensor Version",
     "fulldiskaccess_granted": "Full Disk Access granted to sensor",
+    "fulldiskaccess_granted_short": "FDA granted?",
     "tamper_protection": "Tamper Protection",
     "operational": "Operational",
     "operational_status": "Operational Status",
