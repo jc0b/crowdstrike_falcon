@@ -13,3 +13,4 @@ table:
     - {i18n_header: crowdstrike_falcon.operational_status, column: crowdstrike_falcon.sensor_operational}
     - {i18n_header: crowdstrike_falcon.tamper_protection, column: crowdstrike_falcon.tamper_protection}
     - {i18n_header: crowdstrike_falcon.fulldiskaccess_granted_short, column: crowdstrike_falcon.fulldiskaccess_granted}
+    - {i18n_header: crowdstrike_falcon.customer_id, column: crowdstrike_falcon.customer_id}
