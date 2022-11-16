@@ -12,6 +12,7 @@ import json
 
 
 def get_falcon_data():
+    out = {}
 
     cmd = ['/Applications/Falcon.app/Contents/Resources/falconctl', 'stats', '--plist']
     proc = subprocess.Popen(cmd, shell=False, bufsize=-1, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -20,11 +21,11 @@ def get_falcon_data():
     try:
         crowdstrike_output_plist = plistlib.readPlistFromString(output)
     except Exception:
-        print "Error loading plist from falconctl. Exiting..."
-        exit(1)
-
-    out = {}
-
+        print "No information was loaded from Falcon. Suspected unlicensed."
+        out['customer_id'] = "Not licensed"
+        out['sensor_operational'] = 'false'
+        return out
+    
     out['agent_id'] = crowdstrike_output_plist['agent_info']['agentID']
     out['customer_id'] = crowdstrike_output_plist['agent_info']['customerID']
     out['sensor_operational'] = crowdstrike_output_plist['agent_info']['sensor_operational']
