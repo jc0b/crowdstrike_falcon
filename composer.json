@@ -3,6 +3,6 @@
     "description": "A MunkiReport module for Crowdstrike Falcon.",
     "license": "MIT",
     "require": {
-        "php":"^7.0"
+        "php":"^8.0"
     }
 }
