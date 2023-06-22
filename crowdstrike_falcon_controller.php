@@ -43,6 +43,18 @@ class Crowdstrike_falcon_controller extends Module_controller
     }
 
     /**
+     * Get Falcon version for widget
+     *
+     * @return void
+     **/
+    public function get_falcon_version()
+    {
+        $falcon_version_data = Crowdstrike_falcon_model::selectRaw("COALESCE(SUM(CASE WHEN sensor_version IS NOT NULL THEN 1 END), 0) AS count, sensor_version")->filter()->groupBy('sensor_version')->orderBy('count', 'desc')->get()->toArray();
+        $obj = new View();
+        $obj->view('json', array('msg' => $falcon_version_data));
+    }
+
+    /**
      * Get crowdstrike_falcon information for serial_number
      *
      * @param string $serial serial number
