@@ -1,4 +1,4 @@
-#!/usr/local/munkireport/munkireport-python2
+#!/usr/local/munkireport/munkireport-python3
 
 import os
 import subprocess
@@ -19,14 +19,15 @@ def get_falcon_data():
     (output, unused_error) = proc.communicate()
 
     try:
-        crowdstrike_output_plist = plistlib.readPlistFromString(output)
-    except Exception:
-        print "No information was loaded from Falcon. Suspected unlicensed."
+        crowdstrike_output_plist = plistlib.loads(output)
+    except Exception as e:
+        print(e)
+        print("No information was loaded from Falcon. Suspected unlicensed.")
         out['customer_id'] = "Not licensed"
         out['sensor_operational'] = 'false'
         return out
     
-    out['agent_id'] = crowdstrike_output_plist['agent_info']['agentID']
+    out['agent_id'] = crowdstrike_output_plist['agent_info']['agentID'].lower().replace('-', '')
     out['customer_id'] = crowdstrike_output_plist['agent_info']['customerID']
     out['sensor_operational'] = crowdstrike_output_plist['agent_info']['sensor_operational']
     out['sensor_version'] = crowdstrike_output_plist['agent_info']['version']
@@ -48,13 +49,17 @@ def main():
         print("ERROR: Crowdstrike Falcon is not installed")
         exit(0)
 
-    # Get information about Falcon    
+    # Get information about Falcon   
     result = get_falcon_data()
 
     # Write results to cache
     cachedir = '%s/cache' % os.path.dirname(os.path.realpath(__file__))
     output_plist = os.path.join(cachedir, 'crowdstrike_falcon.plist')
-    plistlib.writePlist(result, output_plist)
+    try:
+        plistlib.writePlist(result, output_plist)
+    except:
+        with open(output_plist, 'wb') as fp:
+            plistlib.dump(result, fp, fmt=plistlib.FMT_XML)
 
 if __name__ == "__main__":
     main()
