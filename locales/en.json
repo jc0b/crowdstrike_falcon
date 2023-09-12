@@ -12,5 +12,6 @@
     "title": "Crowdstrike Falcon",
     "inoperational": "Inoperational",
     "widget_operational": "Crowdstrike Falcon Operational Status",
-    "widget_operational_states": "Crowdstrike Falcon Operational States"
+    "widget_operational_states": "Crowdstrike Falcon Operational States",
+    "zta_widget_title": "Zero Trust Assessment Score Breakdown",
 }

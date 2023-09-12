@@ -14,6 +14,9 @@ class Crowdstrike_falcon_model extends Eloquent
       'sensor_version',
       'fulldiskaccess_granted',
       'tamper_protection',
+      'overall_zta_score',
+      'os_zta_score',
+      'sensor_zta_score',
     ];
 
     public $timestamps = false;
