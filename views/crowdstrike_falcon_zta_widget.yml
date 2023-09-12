@@ -1,0 +1,7 @@
+type: bargraph
+widget_id: crowdstrike_falcon_zta-widget
+api_url: /module/crowdstrike_falcon/get_zta_score_breakdown
+i18n_title: crowdstrike.zta_widget_title
+icon: fa-shield
+listing_link: /show/listing/crowdstrike/crowdstrike_falcon
+margin: {left: 150}

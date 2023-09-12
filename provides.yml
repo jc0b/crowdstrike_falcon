@@ -15,3 +15,7 @@ widgets:
         view: crowdstrike_falcon_operational_status_widget
     crowdstrike_falcon_healthy:
         view: crowdstrike_falcon_healthy_widget
+    crowdstrike_falcon_zta:
+        view: crowdstrike_falcon_zta_widget
+    crowdstrike_falcon_version:
+        view: crowdstrike_falcon_version_widget
