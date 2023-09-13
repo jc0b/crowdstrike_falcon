@@ -49,7 +49,7 @@ class Crowdstrike_falcon_controller extends Module_controller
      **/
     public function get_falcon_version()
     {
-        $falcon_version_data = Crowdstrike_falcon_model::selectRaw("COALESCE(SUM(CASE WHEN sensor_version IS NOT NULL THEN 1 END), 0) AS count, sensor_version")->filter()->groupBy('sensor_version')->orderBy('count', 'desc')->get()->toArray();
+        $falcon_version_data = Crowdstrike_falcon_model::selectRaw("COALESCE(SUM(CASE WHEN sensor_version IS NOT NULL THEN 1 END), 0) AS count, sensor_version AS label")->filter()->groupBy('sensor_version')->orderBy('count', 'desc')->get()->toArray();
         $obj = new View();
         $obj->view('json', array('msg' => $falcon_version_data));
     }
