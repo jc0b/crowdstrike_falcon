@@ -8,9 +8,13 @@
     "tamper_protection": "Tamper Protection",
     "operational": "Operational",
     "operational_status": "Operational Status",
+    "overall_zta_score": "Overall assessment",
+    "os_zta_score": "OS assessment",
+    "sensor_zta_score": "Sensor assessment",
     "report_title": "Crowdstrike Falcon Report",
     "title": "Crowdstrike Falcon",
     "inoperational": "Inoperational",
     "widget_operational": "Crowdstrike Falcon Operational Status",
-    "widget_operational_states": "Crowdstrike Falcon Operational States"
+    "widget_operational_states": "Crowdstrike Falcon Operational States",
+    "zta_widget_title": "Zero Trust Assessment Score Breakdown"
 }

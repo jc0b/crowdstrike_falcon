@@ -1,0 +1,7 @@
+type: bargraph
+widget_id: crowdstrike_falcon_agent_version-widget
+api_url: /module/crowdstrike_falcon/get_falcon_version
+i18n_title: crowdstrike_falcon.sensor_version
+icon: fa-arrows-alt
+listing_link: /show/listing/crowdstrike_falcon/crowdstrike_falcon
+margin: {left: 75}

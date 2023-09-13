@@ -49,9 +49,49 @@ class Crowdstrike_falcon_controller extends Module_controller
      **/
     public function get_falcon_version()
     {
-        $falcon_version_data = Crowdstrike_falcon_model::selectRaw("COALESCE(SUM(CASE WHEN sensor_version IS NOT NULL THEN 1 END), 0) AS count, sensor_version")->filter()->groupBy('sensor_version')->orderBy('count', 'desc')->get()->toArray();
+        $falcon_version_data = Crowdstrike_falcon_model::selectRaw("sensor_version as label, count(1) as count")
+        ->filter()
+        ->groupBy('sensor_version')
+        ->orderBy('sensor_version', 'desc')
+        ->get()
+        ->toArray();
+
+        $out = array();
+        foreach ($falcon_version_data as $version) {
+            if (is_null($version["label"])) {
+                continue;
+            }
+            $out[] = $version;
+        }
+
         $obj = new View();
-        $obj->view('json', array('msg' => $falcon_version_data));
+        $obj->view('json', array('msg' => $out));
+    }
+
+    /**
+     * Get Overall ZTA Score breakdown
+     * 
+     * @return void
+     **/
+    public function get_zta_score_breakdown()
+    {
+        $falcon_zta_data = Crowdstrike_falcon_model::selectRaw("overall_zta_score as label, count(1) as count")
+        ->filter()
+        ->groupBy('overall_zta_score')
+        ->orderBy('overall_zta_score', 'desc')
+        ->get()
+        ->toArray();
+
+        $out = array();
+        foreach ($falcon_zta_data as $score) {
+            if (is_null($score["label"])) {
+                continue;
+            }
+            $out[] = $score;
+        }
+
+        $obj = new View();
+        $obj->view('json', array('msg' => $out));
     }
 
     /**
@@ -62,7 +102,7 @@ class Crowdstrike_falcon_controller extends Module_controller
     public function get_data($serial_number = '')
     {
         jsonView(
-            Crowdstrike_falcon_model::selectRaw('sensor_version, sensor_operational, agent_id, customer_id, fulldiskaccess_granted, tamper_protection')
+            Crowdstrike_falcon_model::selectRaw('sensor_version, sensor_operational, agent_id, customer_id, fulldiskaccess_granted, tamper_protection, overall_zta_score, os_zta_score, sensor_zta_score')
                 ->whereSerialNumber($serial_number)
                 ->filter()
                 ->get()

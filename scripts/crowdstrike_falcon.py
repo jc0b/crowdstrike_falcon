@@ -9,7 +9,41 @@ import string
 import datetime
 import time
 import json
+import base64
 
+ZTA_PATH = "/Library/Application Support/CrowdStrike/ZeroTrustAssessment/data.zta"
+
+def open_file(path):
+    try:
+        f = open(path, "r")
+    except IOError as e:
+        print(f"WARNING: Could not open Crowdstrike ZTA file at {path}.")
+        return ""
+    else:
+        with f:
+            file = f.read()
+            return file
+
+
+def get_zta_data():
+    zta_data = {}
+    zta_file = open_file(ZTA_PATH)
+    if(len(zta_file) < 1):
+        print("No ZTA data was found. Perhaps the integration is not enabled?")
+        return {}
+
+    zta_score_json = zta_file.split(".")[1]
+    if len(zta_score_json) % 4 == 2:
+        zta_score_json += "=="
+    elif len(zta_score_json) % 4 == 3:
+        zta_score_json += "="
+    zta_score = json.loads(base64.b64decode(zta_score_json).decode("utf-8"))
+
+    zta_data["overall_zta_score"] = zta_score["assessment"]["overall"]
+    zta_data["os_zta_score"] = zta_score["assessment"]["os"]
+    zta_data["sensor_zta_score"] = zta_score["assessment"]["sensor_config"]
+
+    return zta_data
 
 def get_falcon_data():
     out = {}
@@ -38,7 +72,10 @@ def get_falcon_data():
     else:
         out['fulldiskaccess_granted'] = "No"
     out['tamper_protection'] = crowdstrike_output_plist['dynamic_settings']['installGuard']
-    return out
+
+    zta_data = get_zta_data()
+
+    return out | zta_data
 
 
 def main():
