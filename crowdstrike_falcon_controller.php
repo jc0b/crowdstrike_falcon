@@ -61,7 +61,7 @@ class Crowdstrike_falcon_controller extends Module_controller
             if (is_null($version["label"])) {
                 continue;
             }
-            $out[] = $score;
+            $out[] = $version;
         }
 
         $obj = new View();
