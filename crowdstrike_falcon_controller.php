@@ -61,7 +61,7 @@ class Crowdstrike_falcon_controller extends Module_controller
      **/
     public function get_zta_score_breakdown()
     {
-        $falcon_zta_data = Crowdstrike_falcon_model::selectRaw("overall_zta_score, count(1) as count")
+        $falcon_zta_data = Crowdstrike_falcon_model::selectRaw("overall_zta_score as label, count(1) as count")
         ->filter()
         ->groupBy('overall_zta_score')
         ->orderBy('overall_zta_score', 'desc')
