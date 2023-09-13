@@ -3,7 +3,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
-class CrowdstrikeAddZtaScores extends Migration
+class CrowdstrikeZtaScores extends Migration
 {
     private $tableName = 'crowdstrike_falcon';
 
