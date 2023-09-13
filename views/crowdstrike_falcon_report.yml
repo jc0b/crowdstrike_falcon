@@ -1,6 +1,6 @@
 row1:
   crowdstrike_falcon_operational_status:
   crowdstrike_falcon_healthy:
-  crowdstrike_falcon_version:
 row2:
+  crowdstrike_falcon_version:
   crowdstrike_falcon_zta:
