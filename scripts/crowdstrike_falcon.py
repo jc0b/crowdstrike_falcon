@@ -41,7 +41,7 @@ def get_zta_data():
 
     zta_data["overall_zta_score"] = zta_score["assessment"]["overall"]
     zta_data["os_zta_score"] = zta_score["assessment"]["os"]
-    zta_data["sensor_config_zta_score"] = zta_score["assessment"]["sensor_config"]
+    zta_data["sensor_zta_score"] = zta_score["assessment"]["sensor_config"]
 
     return zta_data
 
