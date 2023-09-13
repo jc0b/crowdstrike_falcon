@@ -3,6 +3,8 @@ Crowdstrike Falcon module
 
 A Crowdstrike Falcon module for MunkiReport that collects output from the Falcon sensors `falconctl` binary, and submits it to MunkiReport.
 
+This module is additionally capable of reading the Zero Trust Assessment file if it is present on the device, and parsing the scores.
+
 ## Configuration
 
 The module uses the Agent ID of a device to provide direct links to the Crowdstrike console from Munkireport for each device. To customise the region you use, please set the variable below, so that the links are correct.
@@ -27,3 +29,6 @@ Possible regions and their values (defaults to `falcon`):
 * sensor_version - string - The Falcon sensor version
 * fulldiskaccess_granted - string - Whether the Falcon Sensor actually reports having Full Disk Access permission
 * tamper_protection - string - Whether the sensor reports tamper protection being enabled
+* overall_zta_score - integer - The overall Zero Trust Assessment score
+* os_zta_score - integer - The OS Zero Trust Assessment score
+* sensor_zta_score - integer - The sensor configuration Zero Trust Assessment score
