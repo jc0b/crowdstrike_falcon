@@ -61,7 +61,7 @@ class Crowdstrike_falcon_controller extends Module_controller
      **/
     public function get_zta_score_breakdown()
     {
-        $falcon_zta_data = Crowdstrike_falcon_model::selectRaw("COALESCE(SUM(CASE WHEN overall_zta_score IS NOT NULL THEN 1 END), 0) AS count, label")->filter()->groupBy('label')->orderBy('count', 'desc')->get()->toArray();
+        $falcon_zta_data = Crowdstrike_falcon_model::selectRaw("COALESCE(SUM(CASE WHEN overall_zta_score IS NOT NULL THEN 1 END), 0) AS count, overall_zta_score")->filter()->groupBy('overall_zta_score')->orderBy('count', 'desc')->get()->toArray();
         $obj = new View();
         $obj->view('json', array('msg' => $falcon_zta_data));
     }
