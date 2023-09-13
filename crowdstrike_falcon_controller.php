@@ -49,7 +49,7 @@ class Crowdstrike_falcon_controller extends Module_controller
      **/
     public function get_falcon_version()
     {
-        $falcon_version_data = Crowdstrike_falcon_model::selectRaw("COALESCE(SUM(CASE WHEN sensor_version IS NOT NULL THEN 1 END), 0) AS count, sensor_version AS label")->filter()->groupBy('sensor_version')->orderBy('count', 'desc')->get()->toArray();
+        $falcon_version_data = Crowdstrike_falcon_model::selectRaw("COALESCE(SUM(CASE WHEN sensor_version IS NOT NULL THEN 1 END), 0) AS count, sensor_version AS label")->filter()->groupBy('sensor_version')->orderBy('sensor_version', 'desc')->get()->toArray();
         $obj = new View();
         $obj->view('json', array('msg' => $falcon_version_data));
     }
@@ -61,7 +61,7 @@ class Crowdstrike_falcon_controller extends Module_controller
      **/
     public function get_zta_score_breakdown()
     {
-        $falcon_zta_data = Crowdstrike_falcon_model::selectRaw("COALESCE(SUM(CASE WHEN overall_zta_score IS NOT NULL THEN 1 END), 0) AS count, overall_zta_score AS label")->filter()->groupBy('overall_zta_score')->orderBy('count', 'desc')->get()->toArray();
+        $falcon_zta_data = Crowdstrike_falcon_model::selectRaw("COALESCE(SUM(CASE WHEN overall_zta_score IS NOT NULL THEN 1 END), 0) AS count, overall_zta_score AS label")->filter()->groupBy('overall_zta_score')->orderBy('overall_zta_score', 'desc')->get()->toArray();
 
         $out = array();
         foreach ($falcon_zta_data as $score) {
