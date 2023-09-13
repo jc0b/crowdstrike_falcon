@@ -83,7 +83,7 @@ class Crowdstrike_falcon_controller extends Module_controller
     public function get_data($serial_number = '')
     {
         jsonView(
-            Crowdstrike_falcon_model::selectRaw('sensor_version, sensor_operational, agent_id, customer_id, fulldiskaccess_granted, tamper_protection')
+            Crowdstrike_falcon_model::selectRaw('sensor_version, sensor_operational, agent_id, customer_id, fulldiskaccess_granted, tamper_protection, overall_zta_score, os_zta_score, sensor_zta_score')
                 ->whereSerialNumber($serial_number)
                 ->filter()
                 ->get()
