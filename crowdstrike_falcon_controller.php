@@ -68,16 +68,16 @@ class Crowdstrike_falcon_controller extends Module_controller
         ->get()
         ->toArray();
 
-        // $out = array();
-        // foreach ($falcon_zta_data as $score) {
-        //     if (is_null($score["label"])) {
-        //         continue;
-        //     }
-        //     $out[] = $score;
-        // }
+        $out = array();
+        foreach ($falcon_zta_data as $score) {
+            if (is_null($score["label"])) {
+                continue;
+            }
+            $out[] = $score;
+        }
 
         $obj = new View();
-        $obj->view('json', array('msg' => $falcon_zta_data));
+        $obj->view('json', array('msg' => $out));
     }
 
     /**
